@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MovieList.SAL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+34bceb67b6738ba6398b5109ce9be527360045ed")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6def390b60a9409546c133a4aea700a83d062cb")]
 [assembly: System.Reflection.AssemblyProductAttribute("MovieList.SAL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MovieList.SAL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

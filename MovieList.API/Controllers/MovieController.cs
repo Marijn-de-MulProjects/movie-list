@@ -7,12 +7,19 @@ namespace MovieList.API.Controllers;
 [Route("api/movies")]
 public class MovieController : ControllerBase
 {
+    private readonly MovieService _movieService;
+    public MovieController(MovieService movieService)
+    {
+        _movieService = movieService;
+    }
+    
     #region Search Movies
 
     [HttpGet("search")]
-    public IActionResult SearchMovie([FromQuery] string movieName)
+    public async Task<IActionResult> SearchMovie([FromQuery] string movieName)
     {
-        return Ok(); 
+        var result = await _movieService.SearchMovie(movieName);
+        return Ok(result); 
     }
 
     [HttpGet("{movieId}")]
