@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "QsABF29Pm9B3L3RMpNJFD2ihtZs86lq1rMg6LFAcjIc=",
+  "Source": "MovieList.API",
+  "BasePath": "_content/MovieList.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

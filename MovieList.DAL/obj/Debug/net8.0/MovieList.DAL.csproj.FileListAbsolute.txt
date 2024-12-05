@@ -1,0 +1,16 @@
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.DAL\bin\Debug\net8.0\MovieList.DAL.deps.json
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.DAL\bin\Debug\net8.0\MovieList.DAL.dll
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.DAL\bin\Debug\net8.0\MovieList.DAL.pdb
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.DAL\bin\Debug\net8.0\MovieList.Common.dll
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.DAL\bin\Debug\net8.0\MovieList.Common.pdb
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.DAL\obj\Debug\net8.0\MovieList.DAL.csproj.AssemblyReference.cache
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.DAL\obj\Debug\net8.0\MovieList.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.DAL\obj\Debug\net8.0\MovieList.DAL.AssemblyInfoInputs.cache
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.DAL\obj\Debug\net8.0\MovieList.DAL.AssemblyInfo.cs
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.DAL\obj\Debug\net8.0\MovieList.DAL.csproj.CoreCompileInputs.cache
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.DAL\obj\Debug\net8.0\MovieList.DAL.sourcelink.json
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.DAL\obj\Debug\net8.0\MovieLis.4B94B306.Up2Date
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.DAL\obj\Debug\net8.0\MovieList.DAL.dll
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.DAL\obj\Debug\net8.0\refint\MovieList.DAL.dll
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.DAL\obj\Debug\net8.0\MovieList.DAL.pdb
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.DAL\obj\Debug\net8.0\ref\MovieList.DAL.dll

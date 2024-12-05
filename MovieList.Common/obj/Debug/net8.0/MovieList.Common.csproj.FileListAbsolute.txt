@@ -1,0 +1,12 @@
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.Common\bin\Debug\net8.0\MovieList.Common.deps.json
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.Common\bin\Debug\net8.0\MovieList.Common.dll
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.Common\bin\Debug\net8.0\MovieList.Common.pdb
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.Common\obj\Debug\net8.0\MovieList.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.Common\obj\Debug\net8.0\MovieList.Common.AssemblyInfoInputs.cache
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.Common\obj\Debug\net8.0\MovieList.Common.AssemblyInfo.cs
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.Common\obj\Debug\net8.0\MovieList.Common.csproj.CoreCompileInputs.cache
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.Common\obj\Debug\net8.0\MovieList.Common.sourcelink.json
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.Common\obj\Debug\net8.0\MovieList.Common.dll
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.Common\obj\Debug\net8.0\refint\MovieList.Common.dll
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.Common\obj\Debug\net8.0\MovieList.Common.pdb
+C:\Users\MarijndeMul\OneDrive - Office 365 Fontys\Documents\Github\Marijn-de-MulProjects\movie-list\MovieList.Common\obj\Debug\net8.0\ref\MovieList.Common.dll
