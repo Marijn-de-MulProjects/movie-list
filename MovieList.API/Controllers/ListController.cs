@@ -8,12 +8,32 @@ namespace MovieList.API.Controllers;
 [Route("api/lists")]
 public class ListController : ControllerBase
 {
+    private readonly ListService _listService;
+    public ListController(ListService listService)
+    {
+        _listService = listService;
+    }
+    
     #region Manage List
     
     [HttpGet]
-    public IActionResult GetAllLists()
+    public async Task<IActionResult> GetAllLists()
     {
-        return Ok(); 
+        var userId = HttpContext.Items["UserId"] as int?; 
+
+        if (userId == null)
+        {
+            return Unauthorized("User not authenticated.");
+        }
+
+        var lists = await _listService.GetListsFromUserId(userId.Value);
+
+        if (lists == null || !lists.Any())
+        {
+            return NotFound("No lists found for the user.");
+        }
+
+        return Ok(lists);
     }
 
     [HttpGet("{listId}")]

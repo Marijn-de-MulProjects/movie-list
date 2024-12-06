@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using MovieList.API.Middleware;
 using MovieList.Common;
 using MovieList.Common.Helpers;
 using MovieList.DAL.Repositories;
@@ -33,6 +34,21 @@ builder.Services.AddScoped<IListRepository, ListRepository>();
 // Controllers 
 builder.Services.AddControllers();  
 
+// JWT Authentication 
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer(options =>
+    {
+        options.RequireHttpsMetadata = false;
+        options.SaveToken = true;
+        options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+        {
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ValidateLifetime = true,
+            IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"])) // Add secret key here
+        };
+    });
+
 // Authorization
 builder.Services.AddAuthorization();
 
@@ -45,6 +61,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// Middleware
+app.UseMiddleware<TokenMiddleware>(Environment.GetEnvironmentVariable("JWT_SECRET"));
 
 // Authentication
 app.UseAuthentication();

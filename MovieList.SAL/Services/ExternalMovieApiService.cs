@@ -20,9 +20,20 @@ namespace MovieList.SAL.Services
                 throw new Exception("TMDB_API_KEY is not set in the environment variables.");
             }
 
-            var query = $"https://api.themoviedb.org/3/discover/movie?query={Uri.EscapeDataString(movieName)}&api_key={apiKey}";
-
             var allMovies = new List<Movie>();
+
+            await FetchMoviesOrTvShows(allMovies, movieName, apiKey, isMovie: true);
+            await FetchMoviesOrTvShows(allMovies, movieName, apiKey, isMovie: false);
+
+            return allMovies;
+        }
+
+        private async Task FetchMoviesOrTvShows(List<Movie> allMovies, string movieName, string apiKey, bool isMovie)
+        {
+            var query = isMovie
+                ? $"https://api.themoviedb.org/3/search/movie?query={Uri.EscapeDataString(movieName)}&api_key={apiKey}"
+                : $"https://api.themoviedb.org/3/search/tv?query={Uri.EscapeDataString(movieName)}&api_key={apiKey}";
+
             var page = 1;
             bool morePages = true;
 
@@ -36,40 +47,107 @@ namespace MovieList.SAL.Services
                     throw new Exception($"External API returned error: {response.StatusCode}");
                 }
 
-                var externalApiResponse = await response.Content.ReadFromJsonAsync<ExternalApiResponse>();
+                var rawResponse = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"API Response Body (Page {page}): {rawResponse}");
 
-                if (externalApiResponse?.Results == null || !externalApiResponse.Results.Any())
+                if (isMovie)
                 {
-                    break;
-                }
+                    var externalMovieResponse = await response.Content.ReadFromJsonAsync<ExternalApiResponseMovie>();
 
-                foreach (var result in externalApiResponse.Results)
-                {
-                    allMovies.Add(new Movie
+                    if (externalMovieResponse?.Results == null || !externalMovieResponse.Results.Any())
                     {
-                        TmdbId = result.Id, 
-                        Name = result.Title,
-                        Description = result.Overview,
-                        PictureUrl = !string.IsNullOrEmpty(result.PosterPath)
-                            ? $"https://image.tmdb.org/t/p/w500{result.PosterPath}"
-                            : null,
-                        ReleaseDate = DateTime.TryParse(result.ReleaseDate, out var releaseDate) ? releaseDate : (DateTime?)null,
-                        VoteAverage = result.VoteAverage,
-                        VoteCount = result.VoteCount,
-                        Genres = result.GenreIds,
-                        OriginalLanguage = result.OriginalLanguage,
-                        BackdropPath = !string.IsNullOrEmpty(result.BackdropPath)
-                            ? $"https://image.tmdb.org/t/p/w500{result.BackdropPath}"
-                            : null,
-                        MovieLists = new List<Common.MovieList>(), 
-                    });
+                        Console.WriteLine($"No results for movies on page {page}");
+                        break;
+                    }
+
+                    foreach (var result in externalMovieResponse.Results)
+                    {
+                        var posterUrl = GetImageUrl(result.PosterPath);
+                        var backdropUrl = GetImageUrl(result.BackdropPath);
+
+                        DateTime? releaseDate = TryParseDate(result.ReleaseDate);
+
+                        allMovies.Add(new Movie
+                        {
+                            TmdbId = result.Id,
+                            Name = result.Title ?? "Unknown Title",
+                            Description = string.IsNullOrWhiteSpace(result.Overview)
+                                ? "No description available."
+                                : result.Overview,
+                            PictureUrl = posterUrl,
+                            ReleaseDate = releaseDate,
+                            VoteAverage = result.VoteAverage > 0 ? result.VoteAverage : 0,
+                            VoteCount = result.VoteCount > 0 ? result.VoteCount : 0,
+                            Genres = result.GenreIds ?? new List<int>(),
+                            OriginalLanguage = string.IsNullOrWhiteSpace(result.OriginalLanguage)
+                                ? "Unknown"
+                                : result.OriginalLanguage,
+                            BackdropPath = backdropUrl,
+                            MovieLists = new List<Common.MovieList>(),
+                        });
+                    }
+
+                    morePages = externalMovieResponse.Page < externalMovieResponse.TotalPages;
+                }
+                else
+                {
+                    var externalTvResponse = await response.Content.ReadFromJsonAsync<ExternalTvApiResponse>();
+
+                    if (externalTvResponse?.Results == null || !externalTvResponse.Results.Any())
+                    {
+                        Console.WriteLine($"No results for TV shows on page {page}");
+                        break;
+                    }
+
+                    foreach (var result in externalTvResponse.Results)
+                    {
+                        var posterUrl = GetImageUrl(result.PosterPath);
+                        var backdropUrl = GetImageUrl(result.BackdropPath);
+
+                        DateTime? releaseDate = TryParseDate(result.FirstAirDate);
+
+                        allMovies.Add(new Movie
+                        {
+                            TmdbId = result.Id,
+                            Name = result.Name ?? "Unknown Title",
+                            Description = string.IsNullOrWhiteSpace(result.Overview)
+                                ? "No description available."
+                                : result.Overview,
+                            PictureUrl = posterUrl, 
+                            ReleaseDate = releaseDate, 
+                            VoteAverage = result.VoteAverage > 0 ? result.VoteAverage : 0, 
+                            VoteCount = result.VoteCount > 0 ? result.VoteCount : 0, 
+                            Genres = result.GenreIds ?? new List<int>(), 
+                            OriginalLanguage = string.IsNullOrWhiteSpace(result.OriginalLanguage)
+                                ? "Unknown"
+                                : result.OriginalLanguage,
+                            BackdropPath = backdropUrl,
+                            MovieLists = new List<Common.MovieList>(), 
+                        });
+                    }
+
+                    morePages = externalTvResponse.Page < externalTvResponse.TotalPages;
                 }
 
-                morePages = externalApiResponse.Page < externalApiResponse.TotalPages;
                 page++;
             }
+        }
 
-            return allMovies;
+        private string GetImageUrl(string imagePath)
+        {
+            return !string.IsNullOrEmpty(imagePath)
+                ? $"https://image.tmdb.org/t/p/w500{imagePath}"
+                : "https://via.placeholder.com/500x750.png?text=No+Image";
+        } 
+
+        private DateTime? TryParseDate(string dateString)
+        {
+            if (DateTime.TryParse(dateString, out var parsedDate))
+            {
+                return parsedDate;
+            }
+
+            return null; 
         }
     }
 }

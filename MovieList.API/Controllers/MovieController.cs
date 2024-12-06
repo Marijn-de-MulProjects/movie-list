@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MovieList.Common;
 using MovieList.SAL.Services;
 
 namespace MovieList.API.Controllers;
@@ -23,9 +24,16 @@ public class MovieController : ControllerBase
     }
 
     [HttpGet("{movieId}")]
-    public IActionResult GetMovieById(int movieId)
+    public async Task<IActionResult> GetMovieById(int movieId)
     {
-        return Ok(); 
+        var movie = await _movieService.GetMovieById(movieId);
+        
+        if (movie == null)
+        {
+            return NotFound($"Movie with ID {movieId} not found.");
+        }
+
+        return Ok(movie);
     }
 
     #endregion
@@ -33,14 +41,36 @@ public class MovieController : ControllerBase
     #region Manage Movies
 
     [HttpPost]
-    public IActionResult AddMovie()
+    [HttpPost]
+    public async Task<IActionResult> AddMovie([FromBody] Movie movie)
     {
-        return StatusCode(201); 
+        if (movie == null)
+        {
+            return BadRequest("Movie data is required.");
+        }
+
+        var addedMovie = await _movieService.AddMovie(movie);
+
+        if (addedMovie == null)
+        {
+            return StatusCode(500, "There was an error adding the movie.");
+        }
+
+        return Ok(); 
     }
 
     [HttpDelete("{movieId}")]
     public IActionResult DeleteMovie(int movieId)
     {
+        var movie = _movieService.GetMovieById(movieId);
+        
+        if (movie == null)
+        {
+            return NotFound($"Movie with ID {movieId} not found.");
+        }
+        
+        _movieService.DeleteMovie(movieId);
+        
         return NoContent(); 
     }
 

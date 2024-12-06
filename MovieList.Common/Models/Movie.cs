@@ -9,8 +9,8 @@ namespace MovieList.Common
         public string Description { get; set; }
         public string PictureUrl { get; set; } = "https://google.com";
         public DateTime? ReleaseDate { get; set; }
-        public double VoteAverage { get; set; }
-        public int VoteCount { get; set; }
+        public double? VoteAverage { get; set; }
+        public int? VoteCount { get; set; }
         public List<int> Genres { get; set; }
         public string OriginalLanguage { get; set; }
         public string BackdropPath { get; set; }

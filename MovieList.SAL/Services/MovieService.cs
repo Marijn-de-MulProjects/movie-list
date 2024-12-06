@@ -7,6 +7,7 @@ public class MovieService
     private readonly IMovieRepository _movieRepository;
     private readonly IExternalMovieApiService _externalMovieApiService;
 
+
     public MovieService(IMovieRepository movieRepository, IExternalMovieApiService externalMovieApiService)
     {
         _movieRepository = movieRepository;
@@ -35,5 +36,27 @@ public class MovieService
         }
 
         return externalMovies;
+    }
+    
+    public async Task<Movie> GetMovieById(int movieId)
+    {
+        return await _movieRepository.GetMovieById(movieId);
+    }
+    
+    public async Task<bool> AddMovie(Movie movie)
+    {
+        if (movie == null)
+        {
+            throw new ArgumentNullException(nameof(movie));
+        }
+
+        await _movieRepository.AddMovie(movie);
+
+        return true; 
+    }
+    
+    public async Task DeleteMovie(int movieId)
+    {
+        await _movieRepository.DeleteMovie(movieId);
     }
 }

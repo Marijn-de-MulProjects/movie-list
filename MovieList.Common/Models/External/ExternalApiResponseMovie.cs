@@ -1,6 +1,6 @@
 ﻿namespace MovieList.Common;
 
-public class ExternalApiResponse
+public class ExternalApiResponseMovie
 {
     public int Page { get; set; }
     public int TotalPages { get; set; }

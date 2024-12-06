@@ -51,10 +51,10 @@ namespace MovieList.DAL
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(200);
 
-                entity.HasOne(ml => ml.User)
-                      .WithMany(u => u.MovieLists)
-                      .HasForeignKey(ml => ml.UserId)
-                      .OnDelete(DeleteBehavior.Cascade);
+                entity.HasOne<User>()  
+                    .WithMany()  
+                    .HasForeignKey(ml => ml.UserId)  
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<Movie>()
