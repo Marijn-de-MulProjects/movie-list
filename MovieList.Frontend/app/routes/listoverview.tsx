@@ -1,8 +1,13 @@
 import { Button, Title } from '@mantine/core';
+import { useNavigate } from '@remix-run/react';
+import BackButton from '~/components/BackButton';
 
 export default function ListOverview() {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen flex justify-center items-center bg-white px-6">
+      <BackButton />
       <div className="w-full max-w-sm space-y-8 text-center">
         <img
           src="/icon-192x192.png"
@@ -15,8 +20,8 @@ export default function ListOverview() {
           My Movie Lists
         </Title>
         <div className="space-y-4">
-          <Button fullWidth>View List 1</Button>
-          <Button fullWidth>View List 2</Button>
+          <Button fullWidth onClick={() => navigate('/list-details/1')}>View List 1</Button>
+          <Button fullWidth onClick={() => navigate('/list-details/2')}>View List 2</Button>
         </div>
       </div>
     </div>
