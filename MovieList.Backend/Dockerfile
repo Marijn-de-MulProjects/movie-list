@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
 WORKDIR /src
-COPY ["MovieList.Backend/MovieList.API/MovieList.API.csproj", "MovieList.API/"]
+COPY ["MovieList.API/MovieList.API.csproj", "MovieList.API/"]
 RUN dotnet restore "MovieList.API/MovieList.API.csproj"
 
 COPY . .
