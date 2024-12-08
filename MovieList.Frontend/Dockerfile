@@ -1,23 +1,17 @@
-FROM arm64v8/node:16-alpine as build
+FROM node:16-alpine AS build
 
 WORKDIR /app
 
 COPY package*.json ./
-
 RUN npm install
 
 COPY . .
-
 RUN npm run build
 
-FROM arm64v8/node:16-alpine as serve
+FROM nginx:alpine
 
-WORKDIR /app
-
-COPY --from=build /app/dist /app/dist
-
-RUN npm install -g vite
+COPY --from=build /app/dist /usr/share/nginx/html
 
 EXPOSE 80
 
-CMD ["vite", "preview", "--port", "80", "--host", "0.0.0.0"]
+CMD ["nginx", "-g", "daemon off;"]
