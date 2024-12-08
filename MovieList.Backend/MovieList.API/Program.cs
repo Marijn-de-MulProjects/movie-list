@@ -24,17 +24,6 @@ if (string.IsNullOrEmpty(jwtSecret))
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Network 
-builder.WebHost.ConfigureKestrel(options =>
-{
-    options.Listen(IPAddress.Any, 5000);  
-});
-
-builder.Services.AddHttpsRedirection(options =>
-{
-    options.HttpsPort = 5001;  
-});
-
 // Database
 builder.Services.AddDbContext<MovieList.DAL.DbContext>(options =>
     options.UseNpgsql(ConnectionStringHelper.GetConnectionString()));
@@ -61,7 +50,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigins", policy =>
     {
-        policy.WithOrigins("http://localhost:3000")
+        policy.WithOrigins("*")
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials(); 

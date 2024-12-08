@@ -12,14 +12,14 @@ export default function Search() {
   const navigate = useNavigate();
 
   const handleSearch = async () => {
-    if (!query) return; // Avoid empty search
+    if (!query) return; 
 
     setLoading(true);
     setError('');
-    setSearched(true); // Set searched to true after searching
+    setSearched(true);
 
     try {
-      const authToken = localStorage.getItem('authToken'); // Retrieve the authToken from localStorage
+      const authToken = localStorage.getItem('authToken');
       const url = `https://backend:7087/api/movies/search?movieName=${encodeURIComponent(query)}`;
       
       const response = await fetch(url, {
