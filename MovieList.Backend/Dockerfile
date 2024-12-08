@@ -1,13 +1,11 @@
-# Build
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0-arm32v7 AS build  
 WORKDIR /app
 COPY . .
 RUN dotnet restore
 RUN dotnet publish -c Release -o out
 
-# Run
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-arm32v7  
 WORKDIR /app
-COPY --from=build /app/out .
-ENV ASPNETCORE_URLS=http://*:80
-CMD dotnet DDT.Backend.API.dll
+COPY --from=build /app/out . 
+
+CMD ["sh", "-c", "dotnet ef database update && dotnet DDT.Backend.API.dll"]

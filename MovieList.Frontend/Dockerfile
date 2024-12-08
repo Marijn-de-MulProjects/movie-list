@@ -1,20 +1,11 @@
-FROM node:18 AS builder
-
+FROM arm32v7/node:16 AS build  
 WORKDIR /app
-
-COPY package.json package-lock.json ./
-RUN npm install
-
 COPY . .
-
+RUN npm install
 RUN npm run build
 
-FROM node:18-slim
+FROM arm32v7/nginx:alpine  
+COPY --from=build /app/build /usr/share/nginx/html
 
-WORKDIR /app
-
-COPY --from=builder /app /app
-
-EXPOSE 3000
-
-CMD ["npm", "run", "start"]
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
