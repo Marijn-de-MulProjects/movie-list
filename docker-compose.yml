@@ -21,6 +21,7 @@ services:
     depends_on:
       - db
     volumes:
+      - ./.env:/app/.env
       - ./MovieList.API:/app
       - ./data-protection-keys:/root/.aspnet/DataProtection-Keys
     networks:
