@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.SAL\\MovieList.SAL.csproj": {}
+    "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.Backend\\MovieList.SAL\\MovieList.SAL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.Common\\MovieList.Common.csproj": {
+    "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.Backend\\MovieList.Common\\MovieList.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.Common\\MovieList.Common.csproj",
+        "projectUniqueName": "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.Backend\\MovieList.Common\\MovieList.Common.csproj",
         "projectName": "MovieList.Common",
-        "projectPath": "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.Common\\MovieList.Common.csproj",
+        "projectPath": "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.Backend\\MovieList.Common\\MovieList.Common.csproj",
         "packagesPath": "C:\\Users\\MarijndeMul\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.Common\\obj\\",
+        "outputPath": "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.Backend\\MovieList.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -69,14 +69,14 @@
         }
       }
     },
-    "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.SAL\\MovieList.SAL.csproj": {
+    "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.Backend\\MovieList.SAL\\MovieList.SAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.SAL\\MovieList.SAL.csproj",
+        "projectUniqueName": "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.Backend\\MovieList.SAL\\MovieList.SAL.csproj",
         "projectName": "MovieList.SAL",
-        "projectPath": "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.SAL\\MovieList.SAL.csproj",
+        "projectPath": "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.Backend\\MovieList.SAL\\MovieList.SAL.csproj",
         "packagesPath": "C:\\Users\\MarijndeMul\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.SAL\\obj\\",
+        "outputPath": "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.Backend\\MovieList.SAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -98,8 +98,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.Common\\MovieList.Common.csproj": {
-                "projectPath": "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.Common\\MovieList.Common.csproj"
+              "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.Backend\\MovieList.Common\\MovieList.Common.csproj": {
+                "projectPath": "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.Backend\\MovieList.Common\\MovieList.Common.csproj"
               }
             }
           }

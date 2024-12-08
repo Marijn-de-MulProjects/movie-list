@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MovieList.DAL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dc24702c31ecbf68c213d88f0a3452f81b2082e6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9aaaf41bb08dd4c66a7a989002e528adb13ee519")]
 [assembly: System.Reflection.AssemblyProductAttribute("MovieList.DAL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MovieList.DAL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

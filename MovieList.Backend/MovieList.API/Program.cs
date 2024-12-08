@@ -1,3 +1,4 @@
+using System.Net;
 using Microsoft.EntityFrameworkCore;
 using MovieList.API.Middleware;
 using MovieList.Common;
@@ -22,6 +23,17 @@ if (string.IsNullOrEmpty(jwtSecret))
 // Add Services
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Network 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Listen(IPAddress.Any, 5000);  
+});
+
+builder.Services.AddHttpsRedirection(options =>
+{
+    options.HttpsPort = 5001;  
+});
 
 // Database
 builder.Services.AddDbContext<MovieList.DAL.DbContext>(options =>

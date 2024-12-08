@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pWOOtq+7Cyg=",
+  "dgSpecHash": "LetomoHFFgs=",
   "success": true,
-  "projectFilePath": "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.API\\MovieList.API.csproj",
+  "projectFilePath": "C:\\Users\\MarijndeMul\\OneDrive - Office 365 Fontys\\Documents\\Github\\Marijn-de-MulProjects\\movie-list\\MovieList.Backend\\MovieList.API\\MovieList.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MarijndeMul\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\MarijndeMul\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.11\\microsoft.aspnetcore.authentication.jwtbearer.8.0.11.nupkg.sha512",
