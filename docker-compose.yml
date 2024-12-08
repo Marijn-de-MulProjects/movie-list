@@ -27,21 +27,13 @@ services:
     image: marijndemul16/movielist.frontend
     platform: linux/amd64
     volumes:
-      - ./build:/usr/share/nginx/html
-      - ./nginx.conf:/etc/nginx/nginx.conf
-      - /etc/letsencrypt:/etc/letsencrypt 
-    environment:
-      NGINX_HOST: movielist.marijndemul.nl
+      - ./src:/app/src  
+      - /etc/letsencrypt:/etc/letsencrypt  
+    ports:
+      - "3000:3000" 
     networks:
       - app-network
     restart: unless-stopped
-    expose:
-      - "80"
-      - "443"  
-    depends_on:
-      - backend
-      - db
-    entrypoint: nginx -g 'daemon off;'  
 
   db:
     image: postgres:13-alpine
