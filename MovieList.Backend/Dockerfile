@@ -14,7 +14,7 @@ WORKDIR /app
 
 COPY --from=build /app .
 
-COPY MovieList.Backend/MovieList.API/.env /app/.env
+COPY MovieList.API/.env /app/.env
 
 ENV ASPNETCORE_ENVIRONMENT=Production
 
