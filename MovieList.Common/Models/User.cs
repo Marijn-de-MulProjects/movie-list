@@ -8,4 +8,5 @@ public class User
     public string Password { get; set; }  
 
     public ICollection<MovieList> MovieLists { get; set; }
+    public ICollection<MovieListUser> MovieListUsers { get; set; } = new List<MovieListUser>();
 }

@@ -13,7 +13,7 @@ namespace MovieList.Common
         public int? VoteCount { get; set; }
         public List<int> Genres { get; set; }
         public string OriginalLanguage { get; set; }
-        public string BackdropPath { get; set; }
+        public string? BackdropPath { get; set; }
 
         public List<MovieList> MovieLists { get; set; }
     }

@@ -25,7 +25,7 @@ namespace MovieList.API.Middleware
             }
 
             var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
-
+            
             if (token == null || !ValidateTokenAndAttachUser(context, token))
             {
                 context.Response.StatusCode = StatusCodes.Status401Unauthorized;

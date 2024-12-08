@@ -8,6 +8,7 @@ namespace MovieList.DAL
         public DbSet<Movie> Movies { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Common.MovieList> MovieLists { get; set; }
+        public DbSet<MovieListUser> MovieListUsers { get; set; } 
 
         public DbContext(DbContextOptions<DbContext> options)
             : base(options)
@@ -34,7 +35,7 @@ namespace MovieList.DAL
                 entity.Property(e => e.Genres)
                     .HasConversion(
                         v => string.Join(",", v),  
-                        v => v.Split(",", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList()  
+                        v => v.Split(",", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList()
                     );
             });
 
@@ -51,10 +52,23 @@ namespace MovieList.DAL
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(200);
 
-                entity.HasOne<User>()  
-                    .WithMany()  
-                    .HasForeignKey(ml => ml.UserId)  
+                entity.HasOne<User>()
+                    .WithMany()
+                    .HasForeignKey(ml => ml.UserId)
                     .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            modelBuilder.Entity<MovieListUser>(entity =>
+            {
+                entity.HasKey(e => new { e.UserId, e.MovieListId });
+
+                entity.HasOne(mlu => mlu.User)
+                    .WithMany(u => u.MovieListUsers)
+                    .HasForeignKey(mlu => mlu.UserId);
+
+                entity.HasOne(mlu => mlu.MovieList)
+                    .WithMany(ml => ml.MovieListUsers)
+                    .HasForeignKey(mlu => mlu.MovieListId);
             });
 
             modelBuilder.Entity<Movie>()
