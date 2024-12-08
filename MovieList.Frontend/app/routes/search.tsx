@@ -20,7 +20,7 @@ export default function Search() {
 
     try {
       const authToken = localStorage.getItem('authToken'); // Retrieve the authToken from localStorage
-      const url = `https://localhost:7087/api/movies/search?movieName=${encodeURIComponent(query)}`;
+      const url = `https://backend:7087/api/movies/search?movieName=${encodeURIComponent(query)}`;
       
       const response = await fetch(url, {
         method: 'GET',
