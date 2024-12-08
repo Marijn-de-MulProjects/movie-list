@@ -4,9 +4,8 @@ services:
   backend:
     image: marijndemul16/movielist.backend
     platform: linux/amd64
-    ports:
-      - "5000:80"
-      - "5001:443"
+    ports: 
+      - "7087:7087"
     environment:
       DB_HOST: db
       DB_PORT: 5432
@@ -52,15 +51,12 @@ services:
 
   watchtower:
     image: containrrr/watchtower
-    platform: linux/amd64
     container_name: watchtower
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    restart: unless-stopped
     environment:
-      WATCHTOWER_LABEL_ENABLE: "true"
-      WATCHTOWER_CLEANUP: "true"
-      WATCHTOWER_POLL_INTERVAL: "30"
+      - WATCHTOWER_POLL_INTERVAL=5 
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock  
+    restart: always
 
 networks:
   app-network:
