@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: marijndemul16/movielist.frontend:latest
+    container_name: movielist_frontend
+    restart: unless-stopped
+    networks:
+      - movielist_network
+    ports:
+      - "80:80"  
+    depends_on:
+      - backend
+    environment:
+      - FRONTEND_ENV_VAR=production 
+    volumes:
+      - ./frontend_data:/usr/share/nginx/html  
+
+  backend:
+    image: marijndemul16/movielist.backend:latest
+    container_name: movielist_backend
+    restart: unless-stopped
+    networks:
+      - movielist_network
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - DATABASE_URL=postgres://user:password@database:5432/moviedb 
+    ports:
+      - "5000:80"  
+    depends_on:
+      - database
+    env_file:
+      - ./.env  
+
+  database:
+    image: arm64v8/postgres:latest  
+    container_name: movielist_db
+    restart: unless-stopped
+    networks:
+      - movielist_network
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: moviedb
+    volumes:
+      - db_data:/var/lib/postgresql/data  
+    ports:
+      - "5432:5432" 
+
+  watchtower:
+    image: v2tec/watchtower:latest
+    container_name: movielist_watchtower
+    restart: unless-stopped
+    networks:
+      - movielist_network
+    environment:
+      - WATCHTOWER_POLL_INTERVAL=3600 
+      - WATCHTOWER_CLEANUP=true  
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock  
+
+networks:
+  movielist_network:
+    driver: bridge
+
+volumes:
+  db_data:
+    driver: local  

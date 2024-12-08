@@ -17,7 +17,7 @@ jobs:
 
     - name: (Docker) Build MovieList Frontend Docker Image
       working-directory: MovieList.Frontend
-      run: docker build . -t marijndemul16/movielist.frontend:latest
+      run: docker build . --platform linux/arm64 -t marijndemul16/movielist.frontend:latest
 
     - name: (Docker) Log Into Docker Hub
       uses: docker/login-action@v2
@@ -54,7 +54,7 @@ jobs:
 
     - name: (Docker) Build MovieList Backend Docker Image
       working-directory: MovieList.Backend
-      run: docker build . -t marijndemul16/movielist.backend:latest
+      run: docker build . --platform linux/arm64 -t marijndemul16/movielist.backend:latest
 
     - name: (Docker) Log Into Docker Hub
       uses: docker/login-action@v2
