@@ -18,6 +18,6 @@ COPY MovieList.API/.env /app/.env
 
 ENV ASPNETCORE_ENVIRONMENT=Production
 
-RUN dotnet ef database update --project /src/MovieList.DAL/MovieList.DAL.csproj --startup-project /src/MovieList.API/MovieList.API.csproj --no-build
+RUN dotnet ef database update --project MovieList.DAL --startup-project MovieList.API --no-build
 
 ENTRYPOINT ["dotnet", "MovieList.API.dll"]
