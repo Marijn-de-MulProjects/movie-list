@@ -7,9 +7,10 @@ RUN dotnet publish -c Release -o /app
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 COPY --from=build /app . 
+COPY --from=build /src/MovieList.API/MovieList.API.csproj /app/
 
 COPY .env /app/.env
 
-RUN dotnet ef database update --project MovieList.DAL--startup-project MovieList.API --no-build --environment Production
+RUN dotnet ef database update --project /src/MovieList.DAL/MovieList.DAL.csproj --startup-project /src/MovieList.API/MovieList.API.csproj --no-build
 
 ENTRYPOINT ["dotnet", "MovieList.API.dll"]
