@@ -15,9 +15,13 @@ services:
       TMDB_API_KEY: ${TMDB_API_KEY}
       TMDB_READ_ACCESS_TOKEN: ${TMDB_READ_ACCESS_TOKEN}
       JWT_SECRET: ${JWT_SECRET}
-      DEV_MODE: ${DEV_MODE:-false}       
+      DEV_MODE: ${DEV_MODE:-false}      
+    env_file:
+      - .env 
     depends_on:
       - db
+    volumes:
+      - ./data-protection-keys:/root/.aspnet/DataProtection-Keys
     networks:
       - app-network
     restart: unless-stopped

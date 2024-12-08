@@ -7,6 +7,7 @@ using MovieList.DAL.Repositories;
 using MovieList.SAL.Services;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.DataProtection;
 
 // Load Environment Variables
 EnvironmentVariables.LoadEnvironments();
@@ -56,6 +57,10 @@ builder.Services.AddCors(options =>
             .AllowCredentials(); 
     });
 });
+
+// Data Protection
+builder.Services.AddDataProtection()
+    .PersistKeysToFileSystem(new DirectoryInfo(@"/root/.aspnet/DataProtection-Keys"));
 
 // JWT Authentication 
 builder.Services.AddAuthentication("Bearer")
