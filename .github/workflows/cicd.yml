@@ -44,13 +44,13 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: (.NET) Restore MovieList Backend Dependencies
-      run: dotnet restore MovieList.sln
+      run: dotnet restore MovieList.Backend/MovieList.sln
 
     - name: (.NET) Build MovieList Backend
-      run: dotnet build --no-restore MovieList.sln 
+      run: dotnet build --no-restore MovieList.Backend/MovieList.sln 
 
     - name: (.NET) Test MovieList Backend
-      run: dotnet test --no-build --verbosity normal MovieList.sln
+      run: dotnet test --no-build --verbosity normal MovieList.Backend/MovieList.sln
 
     - name: (Docker) Build MovieList Backend Docker Image
       working-directory: MovieList.Backend
