@@ -17,5 +17,7 @@ ENV ASPNETCORE_ENVIRONMENT=Production
 
 RUN ls /app
 
-ENTRYPOINT ["dotnet", "MovieList.API.dll"]
+ENTRYPOINT ["dotnet", "--version"]
+
+
 
