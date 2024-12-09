@@ -13,9 +13,6 @@ RUN ls /app
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 COPY --from=build /app .
-
 ENV ASPNETCORE_ENVIRONMENT=Production
-
-CMD ["sh", "-c", "dotnet MovieList.API.dll || echo 'Runtime Error: $?'"]
-
 ENTRYPOINT ["dotnet", "MovieList.API.dll"]
+
