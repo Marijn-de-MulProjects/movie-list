@@ -8,6 +8,8 @@ COPY . .
 WORKDIR /src/MovieList.API
 RUN dotnet publish "MovieList.API.csproj" -c Release -o /app
 
+RUN ls /app
+
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 COPY --from=build /app .
