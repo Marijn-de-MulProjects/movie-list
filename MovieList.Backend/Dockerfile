@@ -16,4 +16,6 @@ COPY --from=build /app .
 
 ENV ASPNETCORE_ENVIRONMENT=Production
 
+CMD ["sh", "-c", "dotnet MovieList.API.dll || echo 'Runtime Error: $?'"]
+
 ENTRYPOINT ["dotnet", "MovieList.API.dll"]

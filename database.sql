@@ -72,3 +72,4 @@ VALUES ('20241208172540_UpdateUserAndMovieListRelationships', '9.0.0');
 
 COMMIT;
 
+END TRANSACTION;
