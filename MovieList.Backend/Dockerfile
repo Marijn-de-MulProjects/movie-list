@@ -14,5 +14,8 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 COPY --from=build /app .
 ENV ASPNETCORE_ENVIRONMENT=Production
+
+RUN ls /app
+
 ENTRYPOINT ["dotnet", "MovieList.API.dll"]
 
