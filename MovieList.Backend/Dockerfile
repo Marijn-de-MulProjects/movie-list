@@ -6,7 +6,7 @@ RUN dotnet restore "MovieList.API/MovieList.API.csproj"
 
 COPY . .
 WORKDIR /src/MovieList.API
-RUN dotnet publish -c Release -o /app
+RUN dotnet publish "MovieList.API/MovieList.API.csproj" -c Release -o /app
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
