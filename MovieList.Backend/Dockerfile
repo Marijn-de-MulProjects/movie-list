@@ -11,14 +11,21 @@ RUN dotnet publish "MovieList.API.csproj" -c Release -o /app
 RUN ls /app
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
-RUN apt-get update && apt-get install -y wget
-RUN wget https://dotnet.microsoft.com/download/dotnet/thank-you/sdk-8.0-linux-x64-binaries -O dotnet-sdk-8.0.tar.gz
-RUN tar -xvf dotnet-sdk-8.0.tar.gz -C /usr/share/dotnet
-ENV PATH="/usr/share/dotnet:${PATH}"
+
+RUN apt-get update \
+    && apt-get install -y wget ca-certificates gnupg \
+    && wget https://packages.microsoft.com/config/ubuntu/20.04/prod.list -O /etc/apt/sources.list.d/microsoft-prod.list \
+    && wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | apt-key add - \
+    && apt-get update \
+    && apt-get install -y dotnet-sdk-8.0
+
 WORKDIR /app
 COPY --from=build /app .
+
 ENV ASPNETCORE_ENVIRONMENT=Production
+
 ENTRYPOINT ["dotnet", "MovieList.API.dll"]
+
 
 
 
